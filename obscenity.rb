@@ -4,13 +4,6 @@ require 'json'
 require 'yaml'
 require 'open-uri'
 
-configure do
-	enable :sessions
-	Obscenity.configure do |config|
-	  	config.replacement = :stars
-	end
-end
-
 before do
 	Obscenity.configure do |config|
 	  	unless session[:blacklist].nil? 

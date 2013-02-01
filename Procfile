@@ -1,1 +1,1 @@
-web: ruby obscenity.rb -e "development" -p $PORT
+web: ruby obscenity.rb -e "production" -p $PORT
