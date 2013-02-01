@@ -6,7 +6,6 @@ require 'open-uri'
 
 configure do
 	enable :sessions
-	set :session_secret, ENV['SESSION_SECRET'] ||= 'super secret'
 end
 
 before do
@@ -21,7 +20,7 @@ before do
 end
 
 get '/' do
-	erb "Profanity filter based on obscenity gem"
+	"Profanity filter based on obscenity gem"
 end
 
 get '/check/:sentence' do	
