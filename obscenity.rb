@@ -5,6 +5,9 @@ require 'open-uri'
 
 configure do
 	enable :sessions
+	Obscenity.configure do |config|
+	  	config.replacement = :stars
+	end
 end
 
 before do
@@ -18,6 +21,7 @@ end
 
 get '/' do
 	erb "Profanity filter based on obscenity gem"
+
 end
 
 get '/check/:sentence' do	
@@ -33,7 +37,11 @@ get '/blacklist' do
 end
 
 get '/blacklist/:word' do
-	session[:blacklist].push(params[:word])
+	unless session[:blacklist].nil?
+		session[:blacklist].push(params[:word])
+	else
+		session[:blacklist] = []
+	end
 	return status, {'Content-Type' => 'text/yaml'}, session[:blacklist].to_yaml
 end
 
