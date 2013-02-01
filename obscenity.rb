@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'obscenity'
 require 'json'
+require 'yaml'
 require 'open-uri'
 
 configure do
@@ -34,7 +35,9 @@ get '/clean/:sentence' do
 end
 
 get '/blacklist' do
-	return status, {'Content-Type' => 'text/yaml'}, session[:blacklist].to_yaml
+	unless session[:blacklist].nil?
+		return status, {'Content-Type' => 'text/yaml'}, session[:blacklist].to_yaml
+	end
 end
 
 get '/blacklist/:word' do
