@@ -8,23 +8,23 @@ configure do
 	enable :sessions
 end
 
-
+before do
+	Obscenity.configure do |config|
+	  	unless session[:blacklist].nil? 
+		  	unless session[:blacklist].empty?
+		  		config.blacklist = session[:blacklist]
+		  		config.replacement = :stars
+		  	end
+		end
+	end
+end
 
 get '/' do
 	"Profanity filter based on obscenity gem"
 end
 
-get '/check/:sentence' do
-	filter = Obscenity
-	filter.configure do |config|
-		unless session[:blacklist].nil? 
-			unless session[:blacklist].empty?
-				config.blacklist = session[:blacklist]
-				config.replacement = :stars
-			end
-		end
-	end
-	return status, {'Content-Type' => 'application/json'}, {:profane => filter.profane?(params[:sentence]) }.to_json
+get '/check/:sentence' do	
+	return status, {'Content-Type' => 'application/json'}, {:profane => Obscenity.profane?(params[:sentence]) }.to_json
 end
 
 get '/clean/:sentence' do	
