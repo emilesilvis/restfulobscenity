@@ -24,7 +24,7 @@ get '/' do
 end
 
 get '/check/:sentence' do	
-	return status, {'Content-Type' => 'application/json'}, {:profane => params[:sentence] }.to_json
+	return status, {'Content-Type' => 'application/json'}, {:profane => Obscenity.profane?(params[:sentence]) }.to_json
 end
 
 get '/clean/:sentence' do	
