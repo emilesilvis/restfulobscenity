@@ -45,7 +45,7 @@ get '/blacklist/:word' do
 	return status, {'Content-Type' => 'text/yaml'}, session[:blacklist].to_yaml
 end
 
-get '/dumplist' do
-	session[:blacklist] = []
+get '/defaultlist' do
+	session[:blacklist] = nil
 	return status
 end
