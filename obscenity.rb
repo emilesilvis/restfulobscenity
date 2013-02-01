@@ -6,6 +6,7 @@ require 'open-uri'
 
 configure do
 	enable :sessions
+	set :environment, :development
 end
 
 before do
