@@ -11,7 +11,23 @@
 			"file": "Gemfile",
 			"settings":
 			{
-				"buffer_size": 45,
+				"buffer_size": 46,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "obscenity.rb",
+			"settings":
+			{
+				"buffer_size": 1117,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Procfile",
+			"settings":
+			{
+				"buffer_size": 48,
 				"line_ending": "Unix"
 			}
 		}
@@ -40,6 +56,8 @@
 	},
 	"file_history":
 	[
+		"/home/emilesilvis/Dropbox/Public/blacklist.yml",
+		"/home/emilesilvis/Downloads/whitelist",
 		"/home/emilesilvis/.config/sublime-text-2/Packages/Cucumber/Cucumber",
 		"/home/emilesilvis/.config/sublime-text-2/Packages/Cucumber/Plain",
 		"/home/emilesilvis/.config/sublime-text-2/Packages/Cucumber/Text",
@@ -63,6 +81,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"replacement",
 			"gedit.desktop",
 			"gedit.desktop\n\n\n\ngedit.desktop"
 		],
@@ -83,7 +102,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -91,20 +110,72 @@
 					"file": "Gemfile",
 					"settings":
 					{
-						"buffer_size": 45,
+						"buffer_size": 46,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								45,
-								45
+								46,
+								46
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "obscenity.rb",
+					"settings":
+					{
+						"buffer_size": 1117,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								905,
+								905
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Procfile",
+					"settings":
+					{
+						"buffer_size": 48,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								37,
+								37
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
