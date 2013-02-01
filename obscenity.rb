@@ -13,7 +13,7 @@ before do
 	  	unless session[:blacklist].nil? 
 		  	unless session[:blacklist].empty?
 		  		config.blacklist = session[:blacklist]
-		  		config.replacement = :stars
+		  		config.replacement = :garbled
 		  	end
 		end
 	end
@@ -23,15 +23,7 @@ get '/' do
 	"Profanity filter based on obscenity gem"
 end
 
-get '/check/:sentence' do
-	Obscenity.configure do |config|
-	  	unless session[:blacklist].nil? 
-		  	unless session[:blacklist].empty?
-		  		config.blacklist = session[:blacklist]
-		  		config.replacement = :stars
-		  	end
-		end
-	end	
+get '/check/:sentence' do	
 	return status, {'Content-Type' => 'application/json'}, {:profane => Obscenity.profane?(params[:sentence]) }.to_json
 end
 
@@ -40,14 +32,6 @@ get '/clean/:sentence' do
 end
 
 get '/blacklist' do
-	Obscenity.configure do |config|
-	  	unless session[:blacklist].nil? 
-		  	unless session[:blacklist].empty?
-		  		config.blacklist = session[:blacklist]
-		  		config.replacement = :stars
-		  	end
-		end
-	end	
 	unless session[:blacklist].nil?
 		return status, {'Content-Type' => 'text/yaml'}, session[:blacklist].to_yaml
 	end
@@ -65,13 +49,5 @@ end
 
 get '/reset' do
 	session[:blacklist] = nil
-	Obscenity.configure do |config|
-	  	unless session[:blacklist].nil? 
-		  	unless session[:blacklist].empty?
-		  		config.blacklist = session[:blacklist]
-		  		config.replacement = :stars
-		  	end
-		end
-	end	
 	return status
 end
