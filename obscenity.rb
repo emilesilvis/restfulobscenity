@@ -11,12 +11,12 @@ end
 before do
 	@o = Obscenity
 	@o.configure do |config|
-	  	unless session[:blacklist].nil? 
-		  	unless session[:blacklist].empty?
+	  	#unless session[:blacklist].nil? 
+		#  	unless session[:blacklist].empty?
 		  		config.blacklist = session[:blacklist]
 		  		config.replacement = :garbled
-		  	end
-		end
+		#  	end
+		#end
 	end
 end
 
