@@ -12,10 +12,11 @@ end
 
 before do
 	Obscenity.configure do |config|
-	  	config.replacement = :stars
-	  	unless session[:blacklist].empty?
-	  		config.blacklist = session[:blacklist]
-	  	end
+	  	unless session[:blacklist].nil? 
+		  	unless session[:blacklist].empty?
+		  		config.blacklist = session[:blacklist]
+		  	end
+		  end
 	end
 end
 
@@ -41,6 +42,8 @@ get '/blacklist/:word' do
 		session[:blacklist].push(params[:word])
 	else
 		session[:blacklist] = []
+		session[:blacklist].push(params[:word])
+	
 	end
 	return status, {'Content-Type' => 'text/yaml'}, session[:blacklist].to_yaml
 end
