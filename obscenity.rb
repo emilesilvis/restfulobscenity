@@ -23,8 +23,9 @@ get '/' do
 	"Profanity filter based on obscenity gem"
 end
 
-get '/check/:sentence' do	
-	return status, {'Content-Type' => 'application/json'}, {:profane => Obscenity.profane?(params[:sentence]) }.to_json
+get '/check/:sentence' do
+	@result = Obscenity.profane?(params[:sentence])	
+	return status, {'Content-Type' => 'application/json'}, {:profane => @result }.to_json
 end
 
 get '/clean/:sentence' do	
