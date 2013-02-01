@@ -9,7 +9,8 @@ configure do
 end
 
 before do
-	Obscenity.configure do |config|
+	@o = Obscenity
+	@o.configure do |config|
 	  	unless session[:blacklist].nil? 
 		  	unless session[:blacklist].empty?
 		  		config.blacklist = session[:blacklist]
@@ -24,11 +25,11 @@ get '/' do
 end
 
 get '/check/:sentence' do	
-	return status, {'Content-Type' => 'application/json'}, {:profane => Obscenity.profane?(params[:sentence]) }.to_json
+	return status, {'Content-Type' => 'application/json'}, {:profane => @o.profane?(params[:sentence]) }.to_json
 end
 
 get '/clean/:sentence' do	
-	return status, {'Content-Type' => 'application/json'}, {:cleaned_sentence => Obscenity.sanitize(params[:sentence])}.to_json
+	return status, {'Content-Type' => 'application/json'}, {:cleaned_sentence => @o.sanitize(params[:sentence])}.to_json
 end
 
 get '/blacklist' do
