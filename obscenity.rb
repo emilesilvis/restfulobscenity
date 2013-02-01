@@ -4,7 +4,10 @@ require 'json'
 require 'yaml'
 require 'open-uri'
 
-enable :sessions
+configure do
+	enable :sessions
+	#set :session_secret, ENV['SESSION_SECRET'] ||= 'super secret'
+end
 
 before do
 	Obscenity.configure do |config|
@@ -45,7 +48,7 @@ get '/blacklist/:word' do
 	return status, {'Content-Type' => 'text/yaml'}, session[:blacklist].to_yaml
 end
 
-get '/defaultlist' do
+get '/reset' do
 	session[:blacklist] = nil
 	return status
 end
