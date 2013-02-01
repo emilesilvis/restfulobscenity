@@ -6,25 +6,23 @@ require 'open-uri'
 
 configure do
 	enable :sessions
-	set :environment, :development
 end
 
-before do
-	Obscenity.configure do |config|
-	  	unless session[:blacklist].nil? 
-		  	unless session[:blacklist].empty?
-		  		config.blacklist = session[:blacklist]
-		  		config.replacement = :stars
-		  	end
-		  end
-	end
-end
+
 
 get '/' do
 	"Profanity filter based on obscenity gem"
 end
 
-get '/check/:sentence' do	
+get '/check/:sentence' do
+	Obscenity.configure do |config|
+		unless session[:blacklist].nil? 
+			unless session[:blacklist].empty?
+				config.blacklist = session[:blacklist]
+				config.replacement = :stars
+			end
+		end
+	end
 	return status, {'Content-Type' => 'application/json'}, {:profane => Obscenity.profane?(params[:sentence]) }.to_json
 end
 
