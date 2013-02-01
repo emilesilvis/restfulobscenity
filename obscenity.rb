@@ -16,6 +16,10 @@ before do
 	end
 end
 
+get '/'
+	erb "Profanity filter based on obscenity gem"
+end
+
 get '/check/:sentence' do	
 	return status, {'Content-Type' => 'application/json'}, {:profane => Obscenity.profane?(params[:sentence]) }.to_json
 end
