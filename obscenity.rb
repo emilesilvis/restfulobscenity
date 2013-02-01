@@ -16,7 +16,7 @@ before do
 	end
 end
 
-get '/'
+get '/' do
 	erb "Profanity filter based on obscenity gem"
 end
 
