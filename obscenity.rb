@@ -6,7 +6,7 @@ require 'open-uri'
 
 configure do
 	enable :sessions
-	#set :session_secret, ENV['SESSION_SECRET'] ||= 'super secret'
+	set :session_secret, ENV['SESSION_SECRET'] ||= 'super secret'
 end
 
 before do
