@@ -34,7 +34,7 @@ Example response:
 ```
 
 ### Clean a sentence
-Clean a sentence with ```/clean?sentence=this%20is%20crap```.
+Clean a sentence with ```/clean?sentence=somesentence```.
 
 Example request:
 
