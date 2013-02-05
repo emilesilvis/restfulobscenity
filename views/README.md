@@ -23,22 +23,30 @@ Check a sentence for profanity with ```/check/somesentence```.
 
 Example request:
 
-```http://peaceful-dusk-7667.herokuapp.com/check/crap```
+```
+http://peaceful-dusk-7667.herokuapp.com/check/crap
+```
 
 Example response:
 
-```{"profane":true}```
+```
+{"profane":true}
+```
 
 ### Clean a sentence
 Clean a sentence with ```/clean/somesentence```.
 
 Example request:
 
-```http://peaceful-dusk-7667.herokuapp.com/clean/this%20is%20crap```
+```
+http://peaceful-dusk-7667.herokuapp.com/clean/this%20is%20crap
+```
 
 Example response:
 
-```{"cleaned_sentence":"this is ****"}```
+```
+{"cleaned_sentence":"this is ****"}
+```
 
 ## Authors
 
