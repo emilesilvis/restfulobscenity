@@ -11,16 +11,12 @@ end
 get '/use' do
 	Obscenity.configure do |config|
 		config.blacklist = YAML.load(open(params[:list]))
-		config.replacement = :garbled
+		config.replacement = :stars
 	end	
 end
 
 get '/check/:sentence' do
-	Obscenity.configure do |config|
-		config.blacklist = YAML.load(open(params[:list]))
-		config.replacement = :garbled
-	end	
-	return status, {'Content-Type' => 'application/json'}, {:profane => Obscenity.profane?(params[:sentence]) }.to_json
+	return status, {'Content-Type' => 'application/json'}, {:profane => Obscenity.profane?(params[:sentence])}.to_json
 end
 
 get '/clean/:sentence' do	
