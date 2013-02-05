@@ -18,7 +18,7 @@ get '/use' do
 		config.blacklist = YAML.load(open(params[:list]))
 		config.replacement = :stars
 	end
-	return status, {'Content-Type' => 'application/json'}, {:blacklist => params[:list])}.to_json	
+	return status, {'Content-Type' => 'application/json'}, {:blacklist => params[:list]}.to_json	
 end
 
 get '/check' do
