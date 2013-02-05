@@ -2,7 +2,7 @@
 
 RESTful Obscenity is an RESTful API wrapper for [Obscenity](https://github.com/tjackiw/obscenity), a profanity filter gem for Ruby.
 
-An instance is currently hosted at http://peaceful-dusk-7667.herokuapp.com.
+An instance is currently hosted at http://peaceful-dusk-7667.herokuapp.com. Source code at https://github.com/emilesilvis/restfulobscenity.
 
 ## Usage
 
