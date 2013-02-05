@@ -3,52 +3,27 @@ require 'obscenity'
 require 'json'
 require 'yaml'
 require 'open-uri'
+require 'rdiscount'
 
 configure do
 	enable :sessions
 end
 
-before do
-	@o = Obscenity
-	@o.configure do |config|
-	  	#unless session[:blacklist].nil? 
-		#  	unless session[:blacklist].empty?
-		  		config.blacklist = session[:blacklist]
-		  		config.replacement = :garbled
-		#  	end
-		#end
-	end
-end
-
 get '/' do
-	"Profanity filter based on obscenity gem"
+	markdown :README
 end
 
-get '/check/:sentence' do	
-	return status, {'Content-Type' => 'application/json'}, {:profane => @o.profane?(params[:sentence]) }.to_json
+get '/use' do
+	Obscenity.configure do |config|
+		config.blacklist = YAML.load(open(params[:list]))
+		config.replacement = :stars
+	end	
 end
 
-get '/clean/:sentence' do	
-	return status, {'Content-Type' => 'application/json'}, {:cleaned_sentence => @o.sanitize(params[:sentence])}.to_json
+get '/check' do
+	return status, {'Content-Type' => 'application/json'}, {:profane => Obscenity.profane?(params[:sentence])}.to_json
 end
 
-get '/blacklist' do
-	unless session[:blacklist].nil?
-		return status, {'Content-Type' => 'text/yaml'}, session[:blacklist].to_yaml
-	end
-end
-
-get '/blacklist/:word' do
-	unless session[:blacklist].nil?
-		session[:blacklist].push(params[:word])
-	else
-		session[:blacklist] = []
-		session[:blacklist].push(params[:word])
-	end
-	return status, {'Content-Type' => 'text/yaml'}, session[:blacklist].to_yaml
-end
-
-get '/reset' do
-	session[:blacklist] = nil
-	return status
+get '/clean' do	
+	return status, {'Content-Type' => 'application/json'}, {:cleaned_sentence => Obscenity.sanitize(params[:sentence])}.to_json
 end
