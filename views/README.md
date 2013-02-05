@@ -19,12 +19,12 @@ http://peaceful-dusk-7667.herokuapp.com/use?list=http://glio.co.za/emile/blackli
 Comprehensive blacklists used in [Obscenity](https://github.com/tjackiw/obscenity) can be found [here](https://raw.github.com/tjackiw/obscenity/master/config/blacklist.yml) and [here](https://raw.github.com/tjackiw/obscenity/master/config/international.yml).
 
 ### Check a sentence for profanity
-Check a sentence for profanity with ```/check/somesentence```.
+Check a sentence for profanity with ```/check?sentence=somesentence```.
 
 Example request:
 
 ```
-http://peaceful-dusk-7667.herokuapp.com/check/crap
+http://peaceful-dusk-7667.herokuapp.com/check?sentence=this%20is%20crap
 ```
 
 Example response:
@@ -34,12 +34,12 @@ Example response:
 ```
 
 ### Clean a sentence
-Clean a sentence with ```/clean/somesentence```.
+Clean a sentence with ```/clean?sentence=this%20is%20crap```.
 
 Example request:
 
 ```
-http://peaceful-dusk-7667.herokuapp.com/clean/this%20is%20crap
+http://peaceful-dusk-7667.herokuapp.com/clean?sentence=this%20is%20crap
 ```
 
 Example response:
