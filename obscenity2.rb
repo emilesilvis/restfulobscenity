@@ -8,8 +8,11 @@ configure do
 	enable :sessions
 end
 
-get '/' do
-	 '?list'
+get '/use' do
+	Obscenity.configure do |config|
+		config.blacklist = YAML.load(open(params[:list]))
+		config.replacement = :garbled
+	end	
 end
 
 get '/check/:sentence' do
@@ -20,10 +23,6 @@ get '/check/:sentence' do
 	return status, {'Content-Type' => 'application/json'}, {:profane => Obscenity.profane?(params[:sentence]) }.to_json
 end
 
-get '/clean/:sentence' do
-	Obscenity.configure do |config|
-		config.blacklist = YAML.load(open(params[:list]))
-		config.replacement = :garbled
-	end		
+get '/clean/:sentence' do	
 	return status, {'Content-Type' => 'application/json'}, {:cleaned_sentence => Obscenity.sanitize(params[:sentence])}.to_json
 end
