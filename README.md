@@ -14,7 +14,7 @@ Example request:
 http://restfulobscenity.herokuapp.com/use?list=url_to_blacklist.yml
 ```
 
-If no blacklist is set, the [default blacklist](https://raw.github.com/tjackiw/obscenity/master/config/blacklist.yml) used in [Obscenity](https://github.com/tjackiw/obscenity) is used. There is also an [international flavour](https://raw.github.com/tjackiw/obscenity/master/config/international.yml). These can form the basis of your own blacklists.
+If no blacklist is set, the [default Obscenity blacklist](https://raw.github.com/tjackiw/obscenity/master/config/blacklist.yml) is used. There is also an [international flavour](https://raw.github.com/tjackiw/obscenity/master/config/international.yml). These can form the basis of your own blacklists.
 
 ### Check a sentence for profanity
 Check a sentence for profanity with ```/check?sentence=```.
